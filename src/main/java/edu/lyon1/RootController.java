@@ -12,6 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 @Controller
 @RequestMapping("/")
@@ -24,14 +26,34 @@ public class RootController {
     mav.addObject("corps", "bonjour");
     mav.setViewName("template");
 
-    List<String> headersNames = new ArrayList<String>(headers.keySet());
+    List<HttpHeader> headersList = new ArrayList<HttpHeader>();
 
-    mav.addObject("headerNames", headersNames);
+    for(Map.Entry<String, List<String>> header : headers.entrySet()) {
+        headersList.add(new HttpHeader(header.getKey(), header.getValue().toString()));
+    }
 
-
-
+    mav.addObject("headerNames", headersList);
 
     return mav;
+    }
+
+    private class HttpHeader {
+
+        final String name;
+        final String value;
+
+        public HttpHeader(String name, String value) {
+            this.name = name;
+            this.value = value;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getValue() {
+            return value;
+        }
     }
 
 }
