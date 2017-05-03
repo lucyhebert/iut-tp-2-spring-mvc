@@ -3,6 +3,11 @@
     <title>{{titre}}</title>
 </head>
 <body>
-<p>{{corps}}</p>
+    <p>{{corps}}</p>
+        <ul>
+            {{#headerNames}}
+                <li>{{.}}</li>
+            {{/headerNames}}
+        </ul>
 </body>
 </html>
