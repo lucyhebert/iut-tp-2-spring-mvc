@@ -42,16 +42,10 @@ public class RootController {
         return "OK";
     }
 
-//    @RequestMapping(value="/user", method= RequestMethod.GET)
-//    @ResponseBody
-//    public String testGet() {
-//        return "Moi";
-//    }
-
     @RequestMapping(value="/user", method= RequestMethod.GET)
     @ResponseBody
-    public String testGetUser(@RequestParam("nom") String nom, @RequestParam("prenom") String prenom) {
-        return prenom + " " + nom;
+    public User testGetUser(@RequestParam("nom") String nom, @RequestParam("prenom") String prenom) {
+        return new User(nom, prenom);
     }
 
 
