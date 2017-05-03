@@ -45,7 +45,13 @@ public class RootController {
         return "OK";
     }
 
-    
+    @RequestMapping(value="/user", method= RequestMethod.GET)
+    @ResponseBody
+    public String testGet() {
+        return "Moi";
+    }
+
+
     private class HttpHeader {
 
         final String name;
